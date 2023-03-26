@@ -7,16 +7,17 @@ import java.util.Properties
 object KuduToPostgreSQL {
 
   val props = new Properties()
-  props.load(new FileInputStream("config.properties"))
+  props.load(new FileInputStream("/home/ogn/denemeler/big_data/kudutopostgresql/src/config.properties"))
 
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder()
+      .master("local[*]")
       .appName("KuduToPostgreSQL")
       .getOrCreate()
 
     // Kudu options
-    val kuduMaster = "kudu_master_host:port"
-    val kuduTableName = "kudu_table_name"
+    val kuduMaster = "172.18.241.102:7051"
+    val kuduTableName = "impala::sina_mdm.influeanza_silinecekler"
     val kuduOptions = Map(
       "kudu.master" -> kuduMaster,
       "kudu.table" -> kuduTableName,

@@ -8,7 +8,6 @@ lazy val root = (project in file("."))
       libraryDependencies +="org.apache.spark" % "spark-core_2.12" % "3.2.1",
       libraryDependencies += "org.apache.spark" % "spark-streaming_2.12" % "3.2.1",
       libraryDependencies += "org.apache.spark" % "spark-sql_2.12" % "3.2.1" % "provided",
-      libraryDependencies += "org.apache.kudu" %% "kudu-spark3" % "1.16.0"
 )
 assemblyMergeStrategy in assembly := {
     case "META-INF/services/org.apache.spark.sql.sources.DataSourceRegister" => MergeStrategy.concat
